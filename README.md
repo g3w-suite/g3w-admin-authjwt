@@ -2,6 +2,8 @@
 
 A proof of concept authentication module through [JSON Web Tokens](https://jwt.io/) for G3W-SUITE.
 
+![cookie-vs-token-auth](https://user-images.githubusercontent.com/9614886/208136975-baf1b19e-9913-44bd-94dd-f5e455b18ea5.png)
+
 ## Installation
 
 Clone and install jwt module into `/code/g3w-admin/authjwt` directory:
