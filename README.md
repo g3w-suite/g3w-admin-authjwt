@@ -32,11 +32,14 @@ G3WADMIN_LOCAL_MORE_APPS = [
 ]
 ```
 
-## Dependencies
+
+Refer also to [g3w-suite-docker](https://github.com/g3w-suite/g3w-suite-docker) repository for more info about running the docker instance.
+
+## Configuration
 
 The following packages are included in this module:
 
-- [django-cors-headers](https://github.com/adamchainz/django-cors-headers)
+- [django-cors-headers](https://github.com/adamchainz/django-cors-headers#configuration)
 - [djangorestframework-simplejwt](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
 
 Refer to the official docs for a more comprehensive list of the available settings:
@@ -76,6 +79,8 @@ JWT_AUTH = {
 # - https://django-rest-framework-simplejwt.readthedocs.io/en/latest/blacklist_app.html
 # - https://django-rest-framework-simplejwt.readthedocs.io/en/latest/stateless_user_authentication.html
 ```
+
+For the default settings currently applied by this module, see also: [`authjwt/__init__.py`](__init__.py) 
 
 ## API URLs
 
@@ -144,9 +149,9 @@ curl --request POST \
   --data '{ "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3MTI3NTg4NSwiaWF0IjoxNjcxMTg5NDg1LCJqdGkiOiIxMTk2NWNiNGFkYjE0ZmEzOTUxYzBhOTkxNDlhZWMwNyIsInVzZXJfaWQiOjJ9.YA4MesWfQcbYip6EhRxZoQAFxoZeBdlJdCrEme8sTc0" }'
 ```
 
-## TODO:
+## TODO
 
-Find out if it could be feasible to code a sort of proxy class for the `rest_framework.permissions.IsAuthenticated` (or for the `rest_framework.viewsets`) in order to make use of JWT Authentication with current API endpoints that already make use of the `django.contrib.auth.decorators.login_required` method to check if a user is authenticated, ie:
+Find out if it could be feasible to code a sort of proxy class for the [`rest_framework.permissions.IsAuthenticated`](https://www.django-rest-framework.org/api-guide/permissions/#isauthenticated) (or for the [`rest_framework.viewsets`](https://www.django-rest-framework.org/api-guide/viewsets/)) in order to make use of JWT Authentication with current API endpoints that already make use of the [`django.contrib.auth.decorators.login_required`](https://docs.djangoproject.com/en/2.2/topics/auth/default/#django.contrib.auth.decorators.login_required) method to check if a user is authenticated, ie:
 
 ```py
 # apiurls.py
