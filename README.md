@@ -142,7 +142,7 @@ curl --request GET \
   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTgyNDIxLCJpYXQiOjE2NzExODIxMjEsImp0aSI6IjI5YjQyN2ZlYjRkMjQ3YmM4NDAzODcyY2VhOTM2NWI5IiwidXNlcl9pZCI6Mn0.P6E7r9BCEFMzkTohJR4EMW1m8wm4DGZ03232mJO6vQI'
 ```
 
-#### Logout user
+#### Logout user (optional)
 
 ```sh
 curl --request POST \
@@ -153,7 +153,7 @@ curl --request POST \
 
 ## TODO
 
-Find out if it could be feasible to code a sort of proxy class for the [`rest_framework.permissions.IsAuthenticated`](https://www.django-rest-framework.org/api-guide/permissions/#isauthenticated) (or for the [`rest_framework.viewsets`](https://www.django-rest-framework.org/api-guide/viewsets/)) in order to make use of JWT Authentication with current API endpoints that already make use of the [`django.contrib.auth.decorators.login_required`](https://docs.djangoproject.com/en/2.2/topics/auth/default/#django.contrib.auth.decorators.login_required) method to check if a user is authenticated, ie:
+Find out if it could be feasible to code a sort of proxy class for the [`rest_framework.permissions.IsAuthenticated`](https://www.django-rest-framework.org/api-guide/permissions/#isauthenticated) (or for the [`rest_framework.viewsets`](https://www.django-rest-framework.org/api-guide/viewsets/)) in order to make use of JWT Authentication with legacy API endpoints that make use of the [`django.contrib.auth.decorators.login_required`](https://docs.djangoproject.com/en/2.2/topics/auth/default/#django.contrib.auth.decorators.login_required) method to check if a user is authenticated, ie:
 
 ```py
 # apiurls.py
