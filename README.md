@@ -91,11 +91,11 @@ JWT_AUTH = {
 # - https://django-rest-framework-simplejwt.readthedocs.io/en/latest/stateless_user_authentication.html
 ```
 
-For the default settings currently applied by this module, see also: [`authjwt/__init__.py`](__init__.py) 
+For the default settings currently applied by this module, see also: [`authjwt/__init__.py`](authjwt/__init__.py) 
 
 ## API URLs
 
-Check the [`authjwt/apiurls.py`](apiurls.py) file for a comprehensive list and how to use them.
+Check the [`authjwt/apiurls.py`](authjwt/apiurls.py) file for a comprehensive list and how to use them.
 
 Find out that they are loaded correctly in your project by running the following command in a terminal shell:
 
