@@ -290,14 +290,6 @@ Upload all to [PyPI](https://pypi.org/) and verify things look right:
 twine upload dist/*
 ```
 
-For more info:
-
-- [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
-- [Configuring `setuptools`](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
-- [Configuring `setuptools-scm`](https://github.com/pypa/setuptools_scm/#pyprojecttoml-usage)
-- [Using `twine`](https://twine.readthedocs.io/en/latest/)
-- [Automate publishing of Python Packages with GitHub Actions](https://www.seanh.cc/2022/05/21/publishing-python-packages-from-github-actions/)
-
 </details>
 
 ## TODO
@@ -335,6 +327,14 @@ Sample project on how to develop a complete docker stack (backend + frontend):
 
 Sample project on how to implement a "simplejwt" extension without using the Django Rest Framework:
 - [django-ninja-jwt](https://github.com/eadwinCode/django-ninja-jwt)
+
+Packaging a Python project:
+- [PyPA walkthrough](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
+- [`src` layout vs `flat` layout](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/)
+- [Configuring `setuptools`](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
+- [Configuring `setuptools-scm`](https://github.com/pypa/setuptools_scm/#pyprojecttoml-usage)
+- [Using `twine`](https://twine.readthedocs.io/en/latest/)
+- [Automate publishing of Python Packages with GitHub Actions](https://www.seanh.cc/2022/05/21/publishing-python-packages-from-github-actions/)
 
 ---
 
