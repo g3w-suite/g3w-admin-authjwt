@@ -6,10 +6,14 @@ A proof of concept authentication module through [JSON Web Tokens](https://jwt.i
 
 ## Installation
 
-Install jwt module into [`g3w-admin`](https://github.com/g3w-suite/g3w-admin) folder:
+Install jwt module into [`g3w-admin`](https://github.com/g3w-suite/g3w-admin) applications folder:
 
 ```sh
-python3 -m pip install g3w-admin-authjwt
+# Install from github
+pip3 install git+https://github.com/g3w-suite/g3w-admin-authjwt.git@master
+
+# Install from PyPi (not yet available)
+# python3 -m pip install g3w-admin-authjwt
 ```
 
 Enable `'authjwt'` module adding it to `G3W_LOCAL_MORE_APPS` list:
@@ -144,6 +148,55 @@ curl --request POST \
 
 Steps to follow for local development of this module.
 
+<details>
+<summary> Traditional workflow </summary>
+
+Steps to follow in case of a [regular install](https://pip.pypa.io/en/stable/topics/local-project-installs/#regular-installs).
+
+Clone and place the `g3w-admin-authjwt` repository into `g3w-admin` applications folder:
+
+```sh
+cd /path/to/your/development/workspace
+
+git clone https://github.com/g3w-suite/g3w-admin.git ./g3w-admin
+git clone https://github.com/g3w-suite/g3w-admin-authjwt.git ./g3-admin/g3-admin/authjwt
+```
+
+So your folder structure should matches the following:
+
+```sh
+.
+└── g3w-admin/
+    ├── g3w-admin/
+    │   ├── authjwt/
+    │   │   ├── authjwt/
+    │   │   │   ├── apps.py
+    │   │   │   ├── urls.py
+    │   │   │   ├── views.py
+    │   │   │   └── ...
+    │   │   └── README.md
+    │   ├── base/
+    │   ├── core/
+    │   ├── ...
+    │   └── manage.py
+    └── README.md
+```
+
+Install the `g3w-admin-authjwt` module from the local source folder:
+
+```sh
+pip3 install /g3w-admin/g3w-admin/authjwt
+```
+
+Then activate the `'authjwt'` module as usual by adding it to `G3W_LOCAL_MORE_APPS` list.
+
+</details>
+
+<details>
+<summary> Alternative workflow </summary>
+
+Steps to follow in case of a [editable install](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs).
+
 Clone `g3w-admin` and `g3w-admin-authjwt` repositories into two adjacent folders:
 
 ```sh
@@ -174,7 +227,7 @@ So your folder structure should matches the following:
     └── README.md
 ```
 
-Install the `g3w-admin-authjwt` module in [editable mode](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-e) starting from your `g3w-admin` folder:
+Install the `g3w-admin-authjwt` module in editable mode starting from your `g3w-admin` folder:
 
 ```sh
 cd g3w-admin
@@ -184,7 +237,20 @@ python3 -m pip install -e ../g3w-admin-authjwt
 
 Then activate the `'authjwt'` module as usual by adding it to `G3W_LOCAL_MORE_APPS` list.
 
+</details>
+
 ## Publish
+
+Create a new `git tag` that is appropriate for the version you intend to publish, eg:
+
+```sh
+git tag -a v1.0.1
+git push origin v1.0.1
+```
+
+<details>
+<summary> Publishing on the Python Package Index </summary>
+
 Steps to follow when releasing a new software version on [PyPi](https://pypi.org/).
 
 First make sure you have the latest versions of `pip`, `build` and `twine` installed:
@@ -193,13 +259,6 @@ First make sure you have the latest versions of `pip`, `build` and `twine` insta
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade build
 python3 -m pip install --upgrade twine
-```
-
-Create a new `git tag` that is appropriate for the version you intend to publish, eg:
-
-```sh
-git tag -a v1.0.1
-git push origin v1.0.1
 ```
 
 Build the `dist` folder starting from the same directory where `pyproject.toml` is located:
@@ -221,6 +280,8 @@ For more info:
 - [Configuring `setuptools-scm`](https://github.com/pypa/setuptools_scm/#pyprojecttoml-usage)
 - [Using `twine`](https://twine.readthedocs.io/en/latest/)
 - [Automate publishing of Python Packages with GitHub Actions](https://www.seanh.cc/2022/05/21/publishing-python-packages-from-github-actions/)
+
+</details>
 
 ## TODO
 
