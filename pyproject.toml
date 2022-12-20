@@ -1,0 +1,45 @@
+[build-system]
+build-backend   = "setuptools.build_meta"
+requires        = [
+    "setuptools>=45",
+    "setuptools_scm[toml]>=6.2"
+]
+
+[project]
+name            = "g3w-admin-authjwt"
+dynamic         = [
+    "version",     # retrieve package version from git tags
+    "dependencies" # retrieve package dependencies from requirements.txt
+] 
+authors         = [ { name = "Gis3w snc", email = "info@gis3w.it" } ]
+description     = "Proof of concept authentication module through JSON Web Tokens for G3W-SUITE"
+readme          = "README.md"
+license         = { text = "Mozilla Public License 2.0 (MPL 2.0)" }
+classifiers     = [
+    "Development Status :: 3 - Beta",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries",
+]
+# requires-python = ">=3.10"
+
+[project.urls]
+"Homepage"      = "https://github.com/g3w-suite/g3w-admin-authjwt"
+"Bug Tracker"   = "https://github.com/g3w-suite/g3w-admin-authjwt/issues"
+
+[tool.setuptools]
+packages        = ["authjwt"]
+package-dir     = { authjwt = "." } # avoid pip editable install, allow "git clone" into any django project
+
+[tool.setuptools.dynamic]
+dependencies    = { file = ["requirements.txt"] }
+
+[tool.setuptools_scm]
+write_to        = "_version.py" # hardcode version number in a file
+#
+# Or alternatively retrieve it at runtime:
+# https://github.com/pypa/setuptools_scm/#retrieving-package-version-at-runtime

@@ -6,26 +6,16 @@ A proof of concept authentication module through [JSON Web Tokens](https://jwt.i
 
 ## Installation
 
-Clone and install jwt module into `/code/g3w-admin/authjwt` directory:
+Install jwt module into [`g3w-admin`](https://github.com/g3w-suite/g3w-admin) folder:
 
 ```sh
-# docker-entrypoint.sh
-
-...
-
-echo 'Install Auth JWT module'
-
-git clone https://github.com/g3w-suite/g3w-admin-jwt.git /code/g3w-admin/authjwt
-
-pip3 install -r /code/g3w-admin/authjwt/requirements.txt
-
-...
+python3 -m pip install g3w-admin-authjwt
 ```
 
 Enable `'authjwt'` module adding it to `G3W_LOCAL_MORE_APPS` list:
 
 ```py
-# settings_docker.py
+# local_settings.py
 
 G3WADMIN_LOCAL_MORE_APPS = [
     ...
@@ -34,8 +24,7 @@ G3WADMIN_LOCAL_MORE_APPS = [
 ]
 ```
 
-
-Refer also to [g3w-suite-docker](https://github.com/g3w-suite/g3w-suite-docker) repository for more info about running the docker instance.
+Refer to [g3w-suite-docker](https://github.com/g3w-suite/g3w-suite-docker) repository for more info about installing this on a docker instance.
 
 ## Configuration
 
@@ -88,7 +77,7 @@ For the default settings currently applied by this module, see also: [`authjwt/_
 
 Check the [`authjwt/apiurls.py`](apiurls.py) file for a comprehensive list and how to use them.
 
-You can also find out that they are loaded correctly in your app by using the following command in a terminal shell:
+Find out that they are loaded correctly in your project by running the following command in a terminal shell:
 
 ```sh
 python3 manage.py show_urls
@@ -150,6 +139,88 @@ curl --request POST \
   --header 'Content-Type: application/json' \
   --data '{ "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3MTI3NTg4NSwiaWF0IjoxNjcxMTg5NDg1LCJqdGkiOiIxMTk2NWNiNGFkYjE0ZmEzOTUxYzBhOTkxNDlhZWMwNyIsInVzZXJfaWQiOjJ9.YA4MesWfQcbYip6EhRxZoQAFxoZeBdlJdCrEme8sTc0" }'
 ```
+
+## Contributing
+
+Steps to follow for local development of this module.
+
+Clone `g3w-admin` and `g3w-admin-authjwt` repositories into two adjacent folders:
+
+```sh
+cd /path/to/your/development/workspace
+
+git clone https://github.com/g3w-suite/g3w-admin.git
+git clone https://github.com/g3w-suite/g3w-admin-authjwt.git
+```
+
+So your folder structure should matches the following:
+
+```sh
+.
+├── g3w-admin/
+│   ├── g3w-admin/
+│   │   ├── base/
+│   │   ├── core/
+│   │   ├── ...
+│   │   └── manage.py
+│   └── README.md
+│
+└── g3w-admin-authjwt/
+    ├── authjwt/
+    │   ├── apps.py
+    │   ├── urls.py
+    │   ├── views.py
+    │   └── ...
+    └── README.md
+```
+
+Install the `g3w-admin-authjwt` module in [editable mode](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-e) starting from your `g3w-admin` folder:
+
+```sh
+cd g3w-admin
+
+python3 -m pip install -e ../g3w-admin-authjwt
+```
+
+Then activate the `'authjwt'` module as usual by adding it to `G3W_LOCAL_MORE_APPS` list.
+
+## Publish
+Steps to follow when releasing a new software version on [PyPi](https://pypi.org/).
+
+First make sure you have the latest versions of `pip`, `build` and `twine` installed:
+
+```sh
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade build
+python3 -m pip install --upgrade twine
+```
+
+Create a new `git tag` that is appropriate for the version you intend to publish, eg:
+
+```sh
+git tag -a v1.0.1
+git push origin v1.0.1
+```
+
+Build the `dist` folder starting from the same directory where `pyproject.toml` is located:
+
+```sh
+python3 -m build
+```
+
+Upload all to [PyPI](https://test.pypi.org/) and verify things look right:
+
+```sh
+twine upload dist/*
+```
+
+For more info:
+
+- [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
+- [Configuring `setuptools`](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
+- [Configuring `setuptools-scm`](https://github.com/pypa/setuptools_scm/#pyprojecttoml-usage)
+- [Using `twine`](https://twine.readthedocs.io/en/latest/)
+- [Automate publishing of Python Packages with GitHub Actions](https://www.seanh.cc/2022/05/21/publishing-python-packages-from-github-actions/)
 
 ## TODO
 

@@ -2,3 +2,19 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Python setuptools
+*.egg
+*.egg-info/
+*.eggs
+
+# Python virtualenv
+.venv/
+venv/
+
+# PyPi related files
+.coverage
+dist/
+build/
+
+_version.py
