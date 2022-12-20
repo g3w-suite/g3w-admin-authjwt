@@ -13,7 +13,7 @@ Install jwt module into [`g3w-admin`](https://github.com/g3w-suite/g3w-admin) ap
 pip3 install git+https://github.com/g3w-suite/g3w-admin-authjwt.git@master
 
 # Install from PyPi (not yet available)
-# python3 -m pip install g3w-admin-authjwt
+# pip3 install g3w-admin-authjwt
 ```
 
 Enable `'authjwt'` module adding it to `G3W_LOCAL_MORE_APPS` list:
@@ -169,10 +169,11 @@ So your folder structure should matches the following:
 └── g3w-admin/
     ├── g3w-admin/
     │   ├── authjwt/
-    │   │   ├── apps.py
-    │   │   ├── urls.py
-    │   │   ├── views.py
-    │   │   └── ...
+    │   │   ├── authjwt/
+    │   │   │   ├── apps.py
+    │   │   │   ├── urls.py
+    │   │   │   ├── views.py
+    │   │   │   └── ...
     │   │   └── README.md
     │   ├── base/
     │   ├── core/
@@ -195,8 +196,6 @@ Then activate the `'authjwt'` module as usual by adding it to `G3W_LOCAL_MORE_AP
 <summary> Alternative workflow </summary>
 
 Steps to follow in case of a [editable install](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs).
-
-**NB:** probably this installation method no longer works due to this setting: [pyproject.toml#L36](https://github.com/g3w-suite/g3w-admin-authjwt/blob/ce7662938668b2489f4137177fc3c0046a9cd099/pyproject.toml#L36)
 
 Clone `g3w-admin` and `g3w-admin-authjwt` repositories into two adjacent folders:
 

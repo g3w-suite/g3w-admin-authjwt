@@ -33,7 +33,7 @@ classifiers     = [
 
 [tool.setuptools]
 packages        = ["authjwt"]
-package-dir     = { authjwt = "." } # avoid pip editable install, allow "git clone" into any django project
+package-dir     = { authjwt = "authjwt" }
 
 [tool.setuptools.dynamic]
 dependencies    = { file = ["requirements.txt"] }
