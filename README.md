@@ -6,7 +6,7 @@ A proof of concept authentication module through [JSON Web Tokens](https://jwt.i
 
 ## Installation
 
-Install jwt module into [`g3w-admin`](https://github.com/g3w-suite/g3w-admin) applications folder:
+Install jwt module into [`g3w-admin`](https://github.com/g3w-suite/g3w-admin/tree/v.3.5.x/g3w-admin) applications folder:
 
 ```sh
 # Install module from github (v1.0.0)
@@ -14,6 +14,9 @@ pip3 install git+https://github.com/g3w-suite/g3w-admin-authjwt.git@v1.0.0
 
 # Install module from github (master branch)
 # pip3 install git+https://github.com/g3w-suite/g3w-admin-authjwt.git@master
+
+# Install module from local folder (git development)
+# pip3 install /g3w-admin/g3w-admin/authjwt
 
 # Install module from PyPi (not yet available)
 # pip3 install g3w-admin-authjwt
@@ -31,7 +34,7 @@ G3WADMIN_LOCAL_MORE_APPS = [
 ]
 ```
 
-Refer to [g3w-suite-docker](https://github.com/g3w-suite/g3w-suite-docker) repository for more info about installing this on a docker instance.
+Refer to [g3w-suite-docker](https://github.com/g3w-suite/g3w-suite-docker) repository for more info about running this on a docker instance.
 
 **NB** On Ubuntu Jammy you could get an `UNKNOWN` package install instead of `g3w-admin-authjwt`, you can retry installing it as follows to fix it:
 
