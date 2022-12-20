@@ -9,10 +9,13 @@ A proof of concept authentication module through [JSON Web Tokens](https://jwt.i
 Install jwt module into [`g3w-admin`](https://github.com/g3w-suite/g3w-admin) applications folder:
 
 ```sh
-# Install from github
-pip3 install git+https://github.com/g3w-suite/g3w-admin-authjwt.git@master
+# Install module from github (v1.0.0)
+pip3 install git+https://github.com/g3w-suite/g3w-admin-authjwt.git@v1.0.0
 
-# Install from PyPi (not yet available)
+# Install module from github (master branch)
+# pip3 install git+https://github.com/g3w-suite/g3w-admin-authjwt.git@master
+
+# Install module from PyPi (not yet available)
 # pip3 install g3w-admin-authjwt
 ```
 
@@ -29,6 +32,16 @@ G3WADMIN_LOCAL_MORE_APPS = [
 ```
 
 Refer to [g3w-suite-docker](https://github.com/g3w-suite/g3w-suite-docker) repository for more info about installing this on a docker instance.
+
+**NB** On Ubuntu Jammy you could get an `UNKNOWN` package install instead of `g3w-admin-authjwt`, you can retry installing it as follows to fix it:
+
+```sh
+# Fix: https://github.com/pypa/setuptools/issues/3269#issuecomment-1254507377
+export DEB_PYTHON_INSTALL_LAYOUT=deb_system
+
+# And then install again the module
+pip3 install ...
+```
 
 ## Configuration
 
@@ -170,10 +183,12 @@ So your folder structure should matches the following:
     ├── g3w-admin/
     │   ├── authjwt/
     │   │   ├── authjwt/
+    │   │   │   ├── __init__.py
     │   │   │   ├── apps.py
     │   │   │   ├── urls.py
     │   │   │   ├── views.py
     │   │   │   └── ...
+    │   │   ├── pyproject.toml
     │   │   └── README.md
     │   ├── base/
     │   ├── core/
@@ -220,10 +235,12 @@ So your folder structure should matches the following:
 │
 └── g3w-admin-authjwt/
     ├── authjwt/
+    │   ├── __init__.py
     │   ├── apps.py
     │   ├── urls.py
     │   ├── views.py
     │   └── ...
+    ├── pyproject.toml
     └── README.md
 ```
 
@@ -267,7 +284,7 @@ Build the `dist` folder starting from the same directory where `pyproject.toml` 
 python3 -m build
 ```
 
-Upload all to [PyPI](https://test.pypi.org/) and verify things look right:
+Upload all to [PyPI](https://pypi.org/) and verify things look right:
 
 ```sh
 twine upload dist/*
@@ -313,12 +330,11 @@ Code samples on how to implement JWT with Vue and Django Rest Framework:
 - [drf-jwt-axios-vue](https://daniel.feldroy.com/posts/drf-jwt-axios-vue)
 - [article-webapp](https://github.com/smnenko/article-webapp)
 
-Samples project on how to develop a complete docker stack (backend + frontend):
+Sample project on how to develop a complete docker stack (backend + frontend):
 - [qgis-server-landing-page-plugin](https://github.com/elpaso/qgis-server-landing-page-plugin)
 
 Sample project on how to implement a "simplejwt" extension without using the Django Rest Framework:
 - [django-ninja-jwt](https://github.com/eadwinCode/django-ninja-jwt)
-
 
 ---
 
