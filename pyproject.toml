@@ -1,16 +1,17 @@
 [build-system]
 build-backend   = "setuptools.build_meta"
 requires        = [
-    "setuptools>=45",
-    "setuptools_scm[toml]>=6.2"
+    "setuptools>=67",
+    "setuptools_scm[toml]>=7.1"
 ]
 
 [project]
 name            = "g3w-admin-authjwt"
 dynamic         = [
-    "version",     # retrieve package version from git tags
-    "dependencies" # retrieve package dependencies from requirements.txt
-] 
+    "version",              # retrieve package version from git tags
+    "dependencies",         # retrieve package dependencies from requirements.txt
+    "optional-dependencies" # retrieve development dependencies from requirements_dev.txt
+]
 authors         = [ { name = "Gis3w snc", email = "info@gis3w.it" } ]
 description     = "Proof of concept authentication module through JSON Web Tokens for G3W-SUITE"
 readme          = "README.md"
@@ -32,14 +33,23 @@ classifiers     = [
 "Bug Tracker"   = "https://github.com/g3w-suite/g3w-admin-authjwt/issues"
 
 [tool.setuptools]
-packages        = ["authjwt"]
-package-dir     = { authjwt = "authjwt" }
+# Manual package discovery
+# packages        = ["authjwt"]
+# package-dir     = { authjwt = "authjwt" }
+#
+# https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#automatic-discovery
+#
+# NB: see also: MANIFEST.in
 
 [tool.setuptools.dynamic]
 dependencies    = { file = ["requirements.txt"] }
 
+[tool.setuptools.dynamic.optional-dependencies]
+dev  = { file = ["requirements_dev.txt"] }
+
 [tool.setuptools_scm]
-write_to        = "_version.py" # hardcode version number in a file
+fallback_version = "0.0.0-alpha.0"
+write_to         = "_version.py" # hardcode version number in a file
 #
 # Or alternatively retrieve it at runtime:
 # https://github.com/pypa/setuptools_scm/#retrieving-package-version-at-runtime

@@ -1,0 +1,4 @@
+include LICENSE
+include README.md
+recursive-include authjwt/static *
+recursive-include authjwt/templates *
