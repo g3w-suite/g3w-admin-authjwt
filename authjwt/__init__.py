@@ -1,15 +1,6 @@
-# default_app_config = 'auth.jwt.apps.AuthJwtConfig'
+from django import VERSION as django_version
 
-from django.conf import settings
+# https://docs.djangoproject.com/en/3.2/releases/3.2/#automatic-appconfig-discovery
 
-settings.MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware'] + settings.MIDDLEWARE 
-
-settings.THIRD_PARTY_APPS += [
-    'rest_framework_simplejwt',
-    'rest_framework_simplejwt.token_blacklist',
-    'corsheaders'
-]
-
-settings.REST_FRAMEWORK \
-    .setdefault('DEFAULT_AUTHENTICATION_CLASSES', []) \
-    .append('rest_framework_simplejwt.authentication.JWTAuthentication')
+if django_version < (3, 2):
+    default_app_config = 'authjwt.apps.AuthJwtConfig'
