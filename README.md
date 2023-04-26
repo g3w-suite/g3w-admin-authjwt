@@ -1,4 +1,4 @@
-# G3W-ADMIN-AUTHJWT v0.0.1
+# G3W-ADMIN-AUTHJWT v0.0.2
 
 A proof of concept authentication module through [JSON Web Tokens](https://jwt.io/) for G3W-SUITE.
 
