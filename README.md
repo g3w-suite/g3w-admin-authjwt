@@ -175,7 +175,7 @@ Clone and place the `g3w-admin-authjwt` repository into `g3w-admin` applications
 cd /path/to/your/development/workspace
 
 git clone https://github.com/g3w-suite/g3w-admin.git ./g3w-admin
-git clone https://github.com/g3w-suite/g3w-admin-authjwt.git ./g3-admin/g3-admin/authjwt
+git clone https://github.com/g3w-suite/g3w-admin-authjwt.git ./g3w-admin/g3w-admin/authjwt
 ```
 
 So your folder structure should matches the following:
