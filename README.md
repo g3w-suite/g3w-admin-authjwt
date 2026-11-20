@@ -273,42 +273,6 @@ Then activate the `'authjwt'` module as usual by adding it to `G3W_LOCAL_MORE_AP
 
 </details>
 
-## Publish
-
-Create a new `git tag` that is appropriate for the version you intend to publish, eg:
-
-```sh
-git tag -a v1.0.1
-git push origin v1.0.1
-```
-
-<details>
-<summary> Publishing on the Python Package Index </summary>
-
-Steps to follow when releasing a new software version on [PyPi](https://pypi.org/).
-
-First make sure you have the latest versions of `pip`, `build` and `twine` installed:
-
-```sh
-python3 -m pip install --upgrade pip
-python3 -m pip install --upgrade build
-python3 -m pip install --upgrade twine
-```
-
-Build the `dist` folder starting from the same directory where `pyproject.toml` is located:
-
-```sh
-python3 -m build
-```
-
-Upload all to [PyPI](https://pypi.org/) and verify things look right:
-
-```sh
-twine upload dist/*
-```
-
-</details>
-
 ## TODO
 
 Find out if it could be feasible to code a sort of proxy class for the [`rest_framework.permissions.IsAuthenticated`](https://www.django-rest-framework.org/api-guide/permissions/#isauthenticated) (or for the [`rest_framework.viewsets`](https://www.django-rest-framework.org/api-guide/viewsets/)) in order to make use of JWT Authentication with legacy API endpoints that make use of the [`django.contrib.auth.decorators.login_required`](https://docs.djangoproject.com/en/2.2/topics/auth/default/#django.contrib.auth.decorators.login_required) method to check if a user is authenticated, ie:
