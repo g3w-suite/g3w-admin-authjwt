@@ -1,4 +1,6 @@
-# G3W-ADMIN-AUTHJWT v0.0.2
+# G3W-ADMIN-AUTHJWT
+
+[![PyPI version](https://img.shields.io/pypi/v/g3w-admin-authjwt)](https://pypi.org/project/g3w-admin-authjwt/)
 
 A proof of concept authentication module through [JSON Web Tokens](https://jwt.io/) for G3W-SUITE.
 
@@ -160,9 +162,21 @@ curl --request POST \
   --data '{ "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3MTI3NTg4NSwiaWF0IjoxNjcxMTg5NDg1LCJqdGkiOiIxMTk2NWNiNGFkYjE0ZmEzOTUxYzBhOTkxNDlhZWMwNyIsInVzZXJfaWQiOjJ9.YA4MesWfQcbYip6EhRxZoQAFxoZeBdlJdCrEme8sTc0" }'
 ```
 
-## Contributing
+## Development and tests
 
-Steps to follow for local development of this module.
+The integration BDD scenarios are in [`authjwt/tests/features`](authjwt/tests/features).
+They run in the G3W-ADMIN/QGIS environment used by CI. Install the test
+dependencies with:
+
+```sh
+python3 -m pip install -r requirements_test.txt
+```
+
+From the configured G3W-ADMIN directory, run:
+
+```sh
+python3 manage.py behave --simple authjwt/tests
+```
 
 <details>
 <summary> Traditional workflow </summary>

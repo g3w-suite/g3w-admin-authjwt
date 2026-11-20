@@ -17,11 +17,10 @@ description     = "Proof of concept authentication module through JSON Web Token
 readme          = "README.md"
 license         = { text = "Mozilla Public License 2.0 (MPL 2.0)" }
 classifiers     = [
-    "Development Status :: 3 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
     "Framework :: Django",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Topic :: Software Development :: Libraries",
@@ -32,14 +31,13 @@ classifiers     = [
 "Homepage"      = "https://github.com/g3w-suite/g3w-admin-authjwt"
 "Bug Tracker"   = "https://github.com/g3w-suite/g3w-admin-authjwt/issues"
 
-[tool.setuptools]
-# Manual package discovery
-# packages        = ["authjwt"]
-# package-dir     = { authjwt = "authjwt" }
-#
-# https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#automatic-discovery
-#
-# NB: see also: MANIFEST.in
+[tool.setuptools.packages.find]
+include = ["authjwt*"]
+exclude = ["*.tests", "*.tests.*"]
+namespaces = false
+
+[tool.setuptools.exclude-package-data]
+"*" = ["tests/*", "tests/**/*"]
 
 [tool.setuptools.dynamic]
 dependencies    = { file = ["requirements.txt"] }
