@@ -24,6 +24,21 @@ jobs:
       contents: write
       id-token: write
     steps:
-      - uses: g3w-suite/.github/.github/actions/plugin-cd@main
+      - id: prepare
+        uses: g3w-suite/.github/.github/actions/plugin-cd@main
         with:
           github-token: ${{ github.token }}
+      - name: Publish to PyPI
+        if: ${{ steps.prepare.outputs.proceed == 'true' }}
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
+      - name: Create release
+        if: ${{ success() && steps.prepare.outputs.proceed == 'true' }}
+        uses: g3w-suite/.github/.github/actions/plugin-cd-release@main
+        with:
+          github-token: ${{ github.token }}
+          tag: ${{ steps.prepare.outputs.tag }}
+          existing: ${{ steps.prepare.outputs.existing }}
+          commit-sha: ${{ github.event.workflow_run.head_sha }}
+          branch: ${{ github.event.workflow_run.head_branch }}
