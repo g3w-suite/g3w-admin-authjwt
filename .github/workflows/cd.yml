@@ -1,3 +1,4 @@
+# Keep the publisher workflow local for PyPI OIDC; release implementation is shared.
 name: CD
 
 on:
@@ -8,9 +9,21 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: publish-${{ github.repository }}
+  queue: max
+
 jobs:
   publish:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       id-token: write
-    uses: g3w-suite/.github/.github/workflows/cd.yml@main
+    steps:
+      - uses: g3w-suite/.github/.github/actions/plugin-cd@main
+        with:
+          github-token: ${{ github.token }}
